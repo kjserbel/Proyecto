@@ -1,0 +1,16 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Bienvenido</h2>
+<p>Selecciona una opción:</p>
+{% if user.is_authenticated %}
+    <a href="{% url 'register_record' %}">Registrar</a>
+    <a href="{% url 'logout' %}">Salir</a>
+    <a href="/admin/">Entrar a Admin</a>
+{% else %}
+    <a href="{% url 'login' %}">Ingresar</a>
+    <a href="{% url 'django_registration_register' %}">Registrar</a>
+{% endif %}              
+{% endblock %}

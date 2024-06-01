@@ -1,0 +1,20 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Registrar Votos{% endblock %}
+
+{% block content %}
+<h2>Registrar Votos</h2>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <button type="reset">Limpiar</button>
+</form>
+{% endblock %}
